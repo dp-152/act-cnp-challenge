@@ -6,4 +6,9 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\CnpChallenge.Application.Contracts\CnpChallenge.Application.Contracts.csproj" />
+    <ProjectReference Include="..\CnpChallenge.Domain\CnpChallenge.Domain.csproj" />
+  </ItemGroup>
+
 </Project>
