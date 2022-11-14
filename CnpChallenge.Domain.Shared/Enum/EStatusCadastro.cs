@@ -1,4 +1,4 @@
-﻿namespace CnpChallenge.Domain.Enum;
+﻿namespace CnpChallenge.Domain.Shared.Enum;
 
 public enum EStatusCadastro
 {

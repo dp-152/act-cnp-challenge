@@ -6,4 +6,8 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\CnpChallenge.Domain.Shared\CnpChallenge.Domain.Shared.csproj" />
+  </ItemGroup>
+
 </Project>
