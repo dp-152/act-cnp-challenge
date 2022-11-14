@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using CnpChallenge.Domain.Model.ClienteModel;
+using Microsoft.EntityFrameworkCore;
 
 namespace CnpChallenge.Infrastructure.Context;
 
@@ -16,4 +17,7 @@ public partial class MainContext : DbContext
         );
         base.OnModelCreating(modelBuilder);
     }
+    
+    public DbSet<Cliente> Clientes { get; set; }
+    public DbSet<ClienteEndereco> ClienteEnderecos { get; set; }
 }
