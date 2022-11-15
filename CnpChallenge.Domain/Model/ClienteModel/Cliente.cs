@@ -1,4 +1,4 @@
-﻿using CnpChallenge.Domain.Enum;
+﻿using CnpChallenge.Domain.Shared.Enum;
 
 namespace CnpChallenge.Domain.Model.ClienteModel;
 

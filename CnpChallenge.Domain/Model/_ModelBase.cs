@@ -3,5 +3,5 @@
 public class _ModelBase
 {
     public int Id { get; set; }
-    public DateTime DatInclusao { get; set; }
+    public DateTime? DatInclusao { get; set; }
 }

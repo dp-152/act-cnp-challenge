@@ -7,7 +7,11 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CnpChallenge.API", "CnpChal
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CnpChallenge.Application", "CnpChallenge.Application\CnpChallenge.Application.csproj", "{75BD0CB7-CBF0-4D2D-A2CB-26E8E9053CB5}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CnpChallenge.Application.Contracts", "CnpChallenge.Application.Contracts\CnpChallenge.Application.Contracts.csproj", "{A642B7F8-6AE1-4760-A6B0-7AD0696FB9A4}"
+EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CnpChallenge.Domain", "CnpChallenge.Domain\CnpChallenge.Domain.csproj", "{9BAC103D-27E5-47E2-9252-A97A745F0858}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CnpChallenge.Domain.Shared", "CnpChallenge.Domain.Shared\CnpChallenge.Domain.Shared.csproj", "{316035F0-3E24-4718-A7CD-3BA37893781F}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CnpChallenge.Infrastructure", "CnpChallenge.Infrastructure\CnpChallenge.Infrastructure.csproj", "{8B08176C-FB7C-4226-ADE8-5E5D9A7388C3}"
 EndProject
@@ -30,10 +34,18 @@ Global
 		{75BD0CB7-CBF0-4D2D-A2CB-26E8E9053CB5}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{75BD0CB7-CBF0-4D2D-A2CB-26E8E9053CB5}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{75BD0CB7-CBF0-4D2D-A2CB-26E8E9053CB5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A642B7F8-6AE1-4760-A6B0-7AD0696FB9A4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A642B7F8-6AE1-4760-A6B0-7AD0696FB9A4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A642B7F8-6AE1-4760-A6B0-7AD0696FB9A4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A642B7F8-6AE1-4760-A6B0-7AD0696FB9A4}.Release|Any CPU.Build.0 = Release|Any CPU
 		{9BAC103D-27E5-47E2-9252-A97A745F0858}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{9BAC103D-27E5-47E2-9252-A97A745F0858}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{9BAC103D-27E5-47E2-9252-A97A745F0858}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{9BAC103D-27E5-47E2-9252-A97A745F0858}.Release|Any CPU.Build.0 = Release|Any CPU
+		{316035F0-3E24-4718-A7CD-3BA37893781F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{316035F0-3E24-4718-A7CD-3BA37893781F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{316035F0-3E24-4718-A7CD-3BA37893781F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{316035F0-3E24-4718-A7CD-3BA37893781F}.Release|Any CPU.Build.0 = Release|Any CPU
 		{8B08176C-FB7C-4226-ADE8-5E5D9A7388C3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{8B08176C-FB7C-4226-ADE8-5E5D9A7388C3}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{8B08176C-FB7C-4226-ADE8-5E5D9A7388C3}.Release|Any CPU.ActiveCfg = Release|Any CPU

@@ -7,8 +7,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\CnpChallenge.Application.Contracts\CnpChallenge.Application.Contracts.csproj" />
-    <ProjectReference Include="..\CnpChallenge.Domain\CnpChallenge.Domain.csproj" />
+    <ProjectReference Include="..\CnpChallenge.Domain.Shared\CnpChallenge.Domain.Shared.csproj" />
   </ItemGroup>
 
 </Project>
