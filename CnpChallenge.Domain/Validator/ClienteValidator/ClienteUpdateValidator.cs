@@ -7,9 +7,7 @@ public class ClienteUpdateValidator : AbstractValidator<ClienteManagerUpdateRequ
 {
     public ClienteUpdateValidator()
     {
-        RuleFor(c => c.Nome).NotEmpty().MaximumLength(200);
-        RuleFor(c => c.DtNascimento).NotEmpty();
-        RuleFor(c => c.Enderecos).NotEmpty();
+        RuleFor(c => c.Nome).MaximumLength(200);
         RuleForEach(c => c.Enderecos).SetValidator(new ClienteEnderecoUpdateValidator());
     }
 }
