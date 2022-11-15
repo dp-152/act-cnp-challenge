@@ -27,7 +27,7 @@ public class SqlClienteRepository : IClienteRepository
     public async Task<Cliente> Create(Cliente data)
     {
         var result =_context.Clientes.Add(data);
-        await _context.SaveChangesAsync();
+        await SaveAndReload(result.Entity);
 
         return result.Entity;
     }
@@ -35,7 +35,9 @@ public class SqlClienteRepository : IClienteRepository
     public async Task<Cliente> Update(Cliente data)
     {
         var result = _context.Clientes.Update(data);
-        await _context.SaveChangesAsync();
+        
+        HandleCreatedDateOnUpdate(data);
+        await SaveAndReload(result.Entity);
 
         return result.Entity;
     }
@@ -46,13 +48,29 @@ public class SqlClienteRepository : IClienteRepository
         if (entity is null) return false;
 
         var result = _context.Clientes.Remove(entity);
-        await _context.SaveChangesAsync();
+
+        await SaveAndReload(result.Entity);
 
         return result.State == EntityState.Deleted;
     }
 
-    private async Task<bool> SaveChanges()
+    private void HandleCreatedDateOnUpdate(Cliente data)
     {
-        return (await _context.SaveChangesAsync()) >= 0;
+        _context.Entry(data).Property(c => c.DatInclusao).IsModified = false;
+
+        foreach (var address in data.Enderecos)
+        {
+            _context.Entry(address).Property(e => e.DatInclusao).IsModified = false;
+        }
+    }
+
+    private async Task SaveAndReload(Cliente data)
+    {
+        await _context.SaveChangesAsync();
+        await _context.Entry(data).ReloadAsync();
+        foreach (var address in data.Enderecos)
+        {
+            await _context.Entry(address).ReloadAsync();
+        }
     }
 } 
