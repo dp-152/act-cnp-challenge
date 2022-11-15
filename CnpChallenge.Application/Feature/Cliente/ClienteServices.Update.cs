@@ -1,45 +1,44 @@
-﻿using CnpChallenge.Application.Contracts.Common.ClienteTypes;
-using CnpChallenge.Application.Contracts.DTO.Feature.ClienteServices;
+﻿using CnpChallenge.Application.Contracts.DTO.Feature.ClienteServices;
 using CnpChallenge.Domain.DTO.Manager;
 
 namespace CnpChallenge.Application.Feature.Cliente;
 
 public partial class ClienteServices
 {
-    public async Task<ClienteUpdateResponse> UpdateCliente(ClienteUpdateCommand command)
+    public async Task<ClienteResponse> UpdateCliente(ClienteUpdateCommand command)
     {
         var request = new ClienteManagerUpdateRequest()
         {
-            Nome = command.Name,
-            DtNascimento = command.BirthDate,
-            Enderecos = command.Addresses?.Select(e => new ClienteManagerUpdateRequestEndereco()
+            Nome = command.Nome,
+            DtNascimento = command.DtNascimento,
+            Enderecos = command.Enderecos?.Select(e => new ClienteManagerUpdateRequestEndereco()
             {
-                Bairro = e.District,
-                Cep = e.ZipCode,
-                Cidade = e.City,
-                Logradouro = e.Address,
-                Uf = e.State
+                Bairro = e.Bairro,
+                Cep = e.Cep,
+                Cidade = e.Cidade,
+                Logradouro = e.Endereco,
+                Uf = e.Uf
             })
         };
 
         var createdObject = await _clienteManager.Update(request);
         var result = await _clienteRepository.Update(createdObject);
         
-        return new ClienteUpdateResponse() {
+        return new ClienteResponse() {
             Id = result.Id,
-            Name = result.Nome,
-            Addresses = result.Enderecos.Select(e => new ClienteEnderecoResponseBase
+            Nome = result.Nome,
+            Enderecos = result.Enderecos.Select(e => new ClienteEnderecoResponse
             {
                 Id = e.Id,
-                Address = e.Logradouro,
-                City = e.Cidade,
-                District = e.Bairro,
-                State = e.Uf,
+                Logradouro = e.Logradouro,
+                Cidade = e.Cidade,
+                Bairro = e.Bairro,
+                Uf = e.Uf,
                 Status = e.Status,
-                ZipCode = e.Cep,
+                Cep = e.Cep,
             }),
             Status = result.Status,
-            BirthDate = result.DtNascimento,
+            DtNascimento = result.DtNascimento,
         };
     }
 }

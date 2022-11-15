@@ -1,30 +1,29 @@
-﻿using CnpChallenge.Application.Contracts.Common.ClienteTypes;
-using CnpChallenge.Application.Contracts.DTO.Feature.ClienteServices;
+﻿using CnpChallenge.Application.Contracts.DTO.Feature.ClienteServices;
 
 namespace CnpChallenge.Application.Feature.Cliente;
 
 public partial class ClienteServices
 {
-    public async Task<ClienteGetResponse?> GetCliente(ClienteGetRequest request)
+    public async Task<ClienteResponse?> GetCliente(ClienteGetRequest request)
     {
         var result = await _clienteRepository.Get(request.Id);
         if (result is null) return null;
 
-        return new ClienteGetResponse
+        return new ClienteResponse
         {
             Id = result.Id,
-            Addresses = result.Enderecos.Select(e => new ClienteEnderecoResponseBase
+            Enderecos = result.Enderecos.Select(e => new ClienteEnderecoResponse
             {
                 Id = e.Id,
-                Address = e.Logradouro,
-                City = e.Cidade,
-                District = e.Bairro,
-                State = e.Uf,
+                Logradouro = e.Logradouro,
+                Cidade = e.Cidade,
+                Bairro = e.Bairro,
+                Uf = e.Uf,
                 Status = e.Status,
-                ZipCode = e.Cep,
+                Cep = e.Cep,
             }),
-            BirthDate = result.DtNascimento,
-            Name = result.Nome,
+            DtNascimento = result.DtNascimento,
+            Nome = result.Nome,
             Status = result.Status,
         };
     }
