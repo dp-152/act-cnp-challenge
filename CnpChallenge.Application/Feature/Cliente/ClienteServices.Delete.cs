@@ -6,6 +6,11 @@ public partial class ClienteServices
 {
     public async Task<ClienteDeleteResponse> DeleteCliente(ClienteDeleteCommand command)
     {
-        throw new NotImplementedException();
+        var result = await _clienteRepository.Delete(command.Id);
+
+        return new ClienteDeleteResponse
+        {
+            IsDeleted = result,
+        };
     }
 }
