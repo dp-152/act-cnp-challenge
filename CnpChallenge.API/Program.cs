@@ -1,4 +1,5 @@
 using System.Reflection;
+using CnpChallenge.API.ServiceRegistration.Utility;
 using CnpChallenge.Application.Contracts.Interfaces.Feature;
 using CnpChallenge.Application.Feature.Cliente;
 using CnpChallenge.Domain.Interfaces.Manager;
@@ -8,6 +9,7 @@ using CnpChallenge.Infrastructure.Context;
 using CnpChallenge.Infrastructure.Repository;
 using FluentValidation;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.ApplicationModels;
 using Microsoft.EntityFrameworkCore;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Serialization;
@@ -17,7 +19,10 @@ var builder = WebApplication.CreateBuilder(args);
 // Add services to the container.
 
 builder.Services
-    .AddControllers()
+    .AddControllers(options =>
+    {
+        options.Conventions.Add(new RouteTokenTransformerConvention(new SlugifyParameterTransformer()));
+    })
     .AddNewtonsoftJson(options =>
     {
         options.SerializerSettings.Formatting = Formatting.Indented;
