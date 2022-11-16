@@ -7,7 +7,7 @@ public class ClienteEnderecoUpdateValidator : AbstractValidator<ClienteManagerUp
 {
     public ClienteEnderecoUpdateValidator()
     {
-        When(e => e.Id is not null, () =>
+        When(e => e.Id is null, () =>
         {
             RuleFor(e => e.Logradouro).NotEmpty();
             RuleFor(e => e.Bairro).NotEmpty();
