@@ -7,8 +7,18 @@ public partial class ClienteServices
 {
     public async Task DeleteCliente(ClienteDeleteCommand command)
     {
-        var result = await _clienteRepository.Delete(command.Id);
+        try {
+            var result = await _clienteRepository.Delete(command.Id);
 
-        if (!result) throw new ResourceNotFoundException($"ID = {command.Id}");
+            if (!result) throw new ResourceNotFoundException($"ID = {command.Id}");
+        }
+        catch (ResourceNotFoundException)
+        {
+            throw;
+        }
+        catch (Exception ex)
+        {
+            throw new InternalException(false, innerException: ex);
+        }
     }
 }
