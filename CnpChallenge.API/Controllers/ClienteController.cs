@@ -47,4 +47,16 @@ public class ClienteController : _BaseController
         await _clienteServices.DeleteCliente(new ClienteDeleteCommand { Id = id });
         return NoContent();
     }
+
+    [HttpPut("{id}")]
+    [ProducesDefaultResponseType(typeof(ClienteResponseDto))]
+    public async Task<IActionResult> Update([FromRoute] int id, [FromBody] ClienteUpdateRequestDto request)
+    {
+        var command = _mapper.Map<ClienteUpdateCommand>(request);
+        command.Id = id;
+
+        var result = await _clienteServices.UpdateCliente(command);
+
+        return Ok(_mapper.Map<ClienteResponseDto>(result));
+    }
 }
