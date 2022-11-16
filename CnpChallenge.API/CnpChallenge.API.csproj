@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk.Web">
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
 
   <PropertyGroup>
     <TargetFramework>net7.0</TargetFramework>
@@ -21,6 +21,8 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\CnpChallenge.Application.Contracts\CnpChallenge.Application.Contracts.csproj" />
+    <ProjectReference Include="..\CnpChallenge.Application\CnpChallenge.Application.csproj" />
     <ProjectReference Include="..\CnpChallenge.Infrastructure\CnpChallenge.Infrastructure.csproj" />
   </ItemGroup>
 

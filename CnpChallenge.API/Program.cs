@@ -1,4 +1,12 @@
+using System.Reflection;
+using CnpChallenge.Application.Contracts.Interfaces.Feature;
+using CnpChallenge.Application.Feature.Cliente;
+using CnpChallenge.Domain.Interfaces.Manager;
+using CnpChallenge.Domain.Interfaces.Repository;
+using CnpChallenge.Domain.Manager;
 using CnpChallenge.Infrastructure.Context;
+using CnpChallenge.Infrastructure.Repository;
+using FluentValidation;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -18,6 +26,13 @@ builder.Services.AddDbContext<MainContext>((_, optionsBuilder) =>
                 opt.UseQuerySplittingBehavior(QuerySplittingBehavior.SplitQuery);
             });
 });
+
+builder.Services.AddValidatorsFromAssembly(Assembly.Load("CnpChallenge.Domain"));
+builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
+
+builder.Services.AddTransient<IClienteRepository, SqlClienteRepository>();
+builder.Services.AddScoped<IClienteServices, ClienteServices>();
+builder.Services.AddScoped<IClienteManager, ClienteManager>();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
