@@ -7,6 +7,7 @@ using CnpChallenge.Domain.Manager;
 using CnpChallenge.Infrastructure.Context;
 using CnpChallenge.Infrastructure.Repository;
 using FluentValidation;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Serialization;
@@ -24,6 +25,22 @@ builder.Services
         options.SerializerSettings.DefaultValueHandling = DefaultValueHandling.IgnoreAndPopulate;
         options.SerializerSettings.ContractResolver = new CamelCasePropertyNamesContractResolver();
     });
+
+builder.Services
+    .AddApiVersioning(options =>
+    {
+        options.ReportApiVersions = true;
+        options.AssumeDefaultVersionWhenUnspecified = true;
+        options.DefaultApiVersion = new ApiVersion(1, 0);
+    });
+
+builder.Services
+    .AddVersionedApiExplorer(options =>
+    {
+        options.GroupNameFormat = "'v'VVV";
+        options.SubstituteApiVersionInUrl = true;
+    });
+
 builder.Services.AddDbContext<MainContext>((_, optionsBuilder) =>
 {
     optionsBuilder

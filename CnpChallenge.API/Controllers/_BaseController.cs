@@ -4,7 +4,8 @@ using Microsoft.AspNetCore.Mvc;
 namespace CnpChallenge.API.Controllers;
 
 [ApiController]
-[Route("/api/[controller]")]
+[ApiVersion("1")]
+[Route("/api/v{version:apiVersion}/[controller]")]
 [Produces(MediaTypeNames.Application.Json)]
 public class _BaseController : Controller
 { }
