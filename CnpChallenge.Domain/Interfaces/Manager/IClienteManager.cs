@@ -7,5 +7,5 @@ namespace CnpChallenge.Domain.Interfaces.Manager;
 public interface IClienteManager
 {
     Task<Cliente> Create(ClienteManagerCreateRequest request);
-    Task<Cliente> Update(ClienteManagerUpdateRequest request);
+    Task Update(ClienteManagerUpdateRequest request, Cliente source);
 }
