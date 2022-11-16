@@ -60,6 +60,7 @@ using (var scope = app.Services.CreateScope()) {
     var service = scope.ServiceProvider.GetRequiredService<MainContext>();
     await service.Database.MigrateAsync();
 }
+app.UseExceptionHandler("/error");
 
 app.UseHttpsRedirection();
 
