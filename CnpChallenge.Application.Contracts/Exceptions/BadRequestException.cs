@@ -2,17 +2,17 @@
 
 public class BadRequestException : ApplicationException
 {
-    public IEnumerable<Dictionary<string, string>>? InvalidFields { get; }
+    public IEnumerable<string>? ErrorMessages { get; }
 
-    public BadRequestException(IEnumerable<Dictionary<string, string>>? invalidFields, Exception? innerException = null) : base(
+    public BadRequestException(IEnumerable<string>? errorMessages, Exception? innerException = null) : base(
         "One or more fields has failed validation", innerException)
     {
-        InvalidFields = invalidFields;
+        ErrorMessages = errorMessages;
     }
 
-    public BadRequestException(IEnumerable<Dictionary<string, string>>? invalidFields, string? message = null,
+    public BadRequestException(IEnumerable<string>? errorMessages, string? message = null,
         Exception? innerException = null) : base(message, innerException)
     {
-        InvalidFields = invalidFields;
+        ErrorMessages = errorMessages;
     }
 }
