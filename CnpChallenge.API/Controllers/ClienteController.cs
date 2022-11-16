@@ -24,4 +24,12 @@ public class ClienteController : _BaseController
         var result = await _clienteServices.GetAllClientes();
         return Ok(_mapper.Map<IEnumerable<ClienteResponse>, IEnumerable<ClienteResponseDto>>(result));
     }
+
+    [HttpGet("{id}")]
+    [ProducesDefaultResponseType(typeof(ClienteResponseDto))]
+    public async Task<IActionResult> GetById([FromRoute] int id)
+    {
+        var result = await _clienteServices.GetCliente(new ClienteGetRequest { Id = id });
+        return Ok(_mapper.Map<ClienteResponseDto>(result));
+    }
 }
