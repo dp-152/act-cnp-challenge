@@ -7,6 +7,10 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="AutoMapper" Version="12.0.0" />
+    <PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="12.0.0" />
+    <PackageReference Include="Microsoft.AspNetCore.Mvc.NewtonsoftJson" Version="7.0.0" />
+    <PackageReference Include="Microsoft.AspNetCore.Mvc.Versioning.ApiExplorer" Version="5.0.0" />
     <PackageReference Include="Microsoft.AspNetCore.OpenApi" Version="7.0.0" />
     <PackageReference Include="Microsoft.EntityFrameworkCore" Version="7.0.0" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="7.0.0">
@@ -19,6 +23,8 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\CnpChallenge.Application.Contracts\CnpChallenge.Application.Contracts.csproj" />
+    <ProjectReference Include="..\CnpChallenge.Application\CnpChallenge.Application.csproj" />
     <ProjectReference Include="..\CnpChallenge.Infrastructure\CnpChallenge.Infrastructure.csproj" />
   </ItemGroup>
 

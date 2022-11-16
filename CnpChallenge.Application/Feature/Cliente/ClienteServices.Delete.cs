@@ -1,16 +1,24 @@
 ﻿using CnpChallenge.Application.Contracts.DTO.Feature.ClienteServices;
+using CnpChallenge.Application.Contracts.Exceptions;
 
 namespace CnpChallenge.Application.Feature.Cliente;
 
 public partial class ClienteServices
 {
-    public async Task<ClienteDeleteResponse> DeleteCliente(ClienteDeleteCommand command)
+    public async Task DeleteCliente(ClienteDeleteCommand command)
     {
-        var result = await _clienteRepository.Delete(command.Id);
+        try {
+            var result = await _clienteRepository.Delete(command.Id);
 
-        return new ClienteDeleteResponse
+            if (!result) throw new ResourceNotFoundException($"ID = {command.Id}");
+        }
+        catch (ResourceNotFoundException)
         {
-            IsDeleted = result,
-        };
+            throw;
+        }
+        catch (Exception ex)
+        {
+            throw new InternalException(false, innerException: ex);
+        }
     }
 }

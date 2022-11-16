@@ -1,31 +1,26 @@
-﻿using CnpChallenge.Application.Contracts.Common.ClienteTypes;
-using CnpChallenge.Application.Contracts.DTO.Feature.ClienteServices;
+﻿using CnpChallenge.Application.Contracts.DTO.Feature.ClienteServices;
+using CnpChallenge.Application.Contracts.Exceptions;
 
 namespace CnpChallenge.Application.Feature.Cliente;
 
 public partial class ClienteServices
 {
-    public async Task<ClienteGetResponse?> GetCliente(ClienteGetRequest request)
+    public async Task<ClienteResponse> GetCliente(ClienteGetRequest request)
     {
-        var result = await _clienteRepository.Get(request.Id);
-        if (result is null) return null;
-
-        return new ClienteGetResponse
+        try
         {
-            Id = result.Id,
-            Addresses = result.Enderecos.Select(e => new ClienteEnderecoResponseBase
-            {
-                Id = e.Id,
-                Address = e.Logradouro,
-                City = e.Cidade,
-                District = e.Bairro,
-                State = e.Uf,
-                Status = e.Status,
-                ZipCode = e.Cep,
-            }),
-            BirthDate = result.DtNascimento,
-            Name = result.Nome,
-            Status = result.Status,
-        };
+            var result = await _clienteRepository.Get(request.Id);
+            if (result is null) throw new ResourceNotFoundException($"ID = {request.Id}");
+
+            return _mapper.Map<ClienteResponse>(result);
+        }
+        catch (ResourceNotFoundException)
+        {
+            throw;
+        }
+        catch (Exception ex)
+        {
+            throw new InternalException(false, innerException: ex);
+        }
     }
 }

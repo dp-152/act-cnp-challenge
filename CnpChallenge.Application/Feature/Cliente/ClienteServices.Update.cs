@@ -1,45 +1,39 @@
-﻿using CnpChallenge.Application.Contracts.Common.ClienteTypes;
-using CnpChallenge.Application.Contracts.DTO.Feature.ClienteServices;
+﻿using CnpChallenge.Application.Contracts.DTO.Feature.ClienteServices;
+using CnpChallenge.Application.Contracts.Exceptions;
 using CnpChallenge.Domain.DTO.Manager;
+using FluentValidation;
 
 namespace CnpChallenge.Application.Feature.Cliente;
 
 public partial class ClienteServices
 {
-    public async Task<ClienteUpdateResponse> UpdateCliente(ClienteUpdateCommand command)
+    public async Task<ClienteResponse> UpdateCliente(ClienteUpdateCommand command)
     {
-        var request = new ClienteManagerUpdateRequest()
+        try
         {
-            Nome = command.Name,
-            DtNascimento = command.BirthDate,
-            Enderecos = command.Addresses?.Select(e => new ClienteManagerUpdateRequestEndereco()
-            {
-                Bairro = e.District,
-                Cep = e.ZipCode,
-                Cidade = e.City,
-                Logradouro = e.Address,
-                Uf = e.State
-            })
-        };
+            var source = await _clienteRepository.Get(command.Id);
+            if (source is null) throw new ResourceNotFoundException($"ID = {command.Id}");
 
-        var createdObject = await _clienteManager.Update(request);
-        var result = await _clienteRepository.Update(createdObject);
-        
-        return new ClienteUpdateResponse() {
-            Id = result.Id,
-            Name = result.Nome,
-            Addresses = result.Enderecos.Select(e => new ClienteEnderecoResponseBase
-            {
-                Id = e.Id,
-                Address = e.Logradouro,
-                City = e.Cidade,
-                District = e.Bairro,
-                State = e.Uf,
-                Status = e.Status,
-                ZipCode = e.Cep,
-            }),
-            Status = result.Status,
-            BirthDate = result.DtNascimento,
-        };
+            var request = _mapper.Map<ClienteManagerUpdateRequest>(command);
+
+            _clienteManager.Update(request, source);
+            var result = await _clienteRepository.Update(source);
+
+            return _mapper.Map<ClienteResponse>(result);
+        }
+        catch (ValidationException valEx)
+        {
+            throw new BadRequestException(
+                valEx.Errors.Select(el => el.ErrorMessage.ToString()),
+                valEx.Message, valEx);
+        }
+        catch (ResourceNotFoundException)
+        {
+            throw;
+        }
+        catch (Exception ex)
+        {
+            throw new InternalException(false, innerException: ex);
+        }
     }
 }

@@ -1,45 +1,32 @@
-﻿using CnpChallenge.Application.Contracts.Common.ClienteTypes;
-using CnpChallenge.Application.Contracts.DTO.Feature.ClienteServices;
+﻿using CnpChallenge.Application.Contracts.DTO.Feature.ClienteServices;
+using CnpChallenge.Application.Contracts.Exceptions;
 using CnpChallenge.Domain.DTO.Manager;
+using FluentValidation;
 
 namespace CnpChallenge.Application.Feature.Cliente;
 
 public partial class ClienteServices
 {
-    public async Task<ClienteCreateResponse> CreateCliente(ClienteCreateCommand command)
+    public async Task<ClienteResponse> CreateCliente(ClienteCreateCommand command)
     {
-        var request = new ClienteManagerCreateRequest
+        try
         {
-            Nome = command.Name,
-            DtNascimento = command.BirthDate,
-            Enderecos = command.Addresses.Select(e => new ClienteManagerCreateRequestEndereco
-            {
-                Bairro = e.District,
-                Cep = e.ZipCode,
-                Cidade = e.City,
-                Logradouro = e.Address,
-                Uf = e.State
-            })
-        };
+            var request = _mapper.Map<ClienteManagerCreateRequest>(command);
 
-        var createdObject = await _clienteManager.Create(request);
-        var result = await _clienteRepository.Create(createdObject);
-        
-        return new ClienteCreateResponse {
-            Id = result.Id,
-            Name = result.Nome,
-            Addresses = result.Enderecos.Select(e => new ClienteEnderecoResponseBase
-            {
-                Id = e.Id,
-                Address = e.Logradouro,
-                City = e.Cidade,
-                District = e.Bairro,
-                State = e.Uf,
-                Status = e.Status,
-                ZipCode = e.Cep,
-            }),
-            Status = result.Status,
-            BirthDate = result.DtNascimento,
-        };
+            var createdObject = _clienteManager.Create(request);
+            var result = await _clienteRepository.Create(createdObject);
+
+            return _mapper.Map<ClienteResponse>(result);
+        }
+        catch (ValidationException valEx)
+        {
+            throw new BadRequestException(
+                valEx.Errors.Select(el => el.ErrorMessage.ToString()),
+                valEx.Message, valEx);
+        }
+        catch (Exception ex)
+        {
+            throw new InternalException(false, innerException: ex);
+        }
     }
 }

@@ -4,9 +4,9 @@ namespace CnpChallenge.Application.Contracts.Interfaces.Feature;
 
 public interface IClienteServices
 {
-    Task<ClienteCreateResponse> CreateCliente(ClienteCreateCommand command);
-    Task<ClienteDeleteResponse> DeleteCliente(ClienteDeleteCommand command);
-    Task<IEnumerable<ClienteGetAllResponse>> GetAllClientes();
-    Task<ClienteGetResponse?> GetCliente(ClienteGetRequest request);
-    Task<ClienteUpdateResponse> UpdateCliente(ClienteUpdateCommand command);
+    Task<ClienteResponse> CreateCliente(ClienteCreateCommand command);
+    Task DeleteCliente(ClienteDeleteCommand command);
+    Task<IEnumerable<ClienteResponse>> GetAllClientes();
+    Task<ClienteResponse> GetCliente(ClienteGetRequest request);
+    Task<ClienteResponse> UpdateCliente(ClienteUpdateCommand command);
 }

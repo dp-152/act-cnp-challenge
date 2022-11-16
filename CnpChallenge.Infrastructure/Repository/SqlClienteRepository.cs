@@ -49,9 +49,8 @@ public class SqlClienteRepository : IClienteRepository
 
         var result = _context.Clientes.Remove(entity);
 
-        await SaveAndReload(result.Entity);
-
-        return result.State == EntityState.Deleted;
+        await _context.SaveChangesAsync();
+        return result.State is EntityState.Deleted or EntityState.Detached;
     }
 
     private void HandleCreatedDateOnUpdate(Cliente data)

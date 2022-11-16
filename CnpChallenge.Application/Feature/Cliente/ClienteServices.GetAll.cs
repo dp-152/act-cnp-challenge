@@ -1,30 +1,21 @@
-﻿using CnpChallenge.Application.Contracts.Common.ClienteTypes;
-using CnpChallenge.Application.Contracts.DTO.Feature.ClienteServices;
+﻿using CnpChallenge.Application.Contracts.DTO.Feature.ClienteServices;
+using CnpChallenge.Application.Contracts.Exceptions;
 
 namespace CnpChallenge.Application.Feature.Cliente;
 
 public partial class ClienteServices
 {
-    public async Task<IEnumerable<ClienteGetAllResponse>> GetAllClientes()
+    public async Task<IEnumerable<ClienteResponse>> GetAllClientes()
     {
-        var result = await _clienteRepository.GetAll();
-
-        return result.Select(c => new ClienteGetAllResponse
+        try
         {
-            Id = c.Id,
-            Addresses = c.Enderecos.Select(e => new ClienteEnderecoResponseBase
-            {
-                Id = e.Id,
-                Address = e.Logradouro,
-                City = e.Cidade,
-                District = e.Bairro,
-                State = e.Uf,
-                Status = e.Status,
-                ZipCode = e.Cep,
-            }),
-            BirthDate = c.DtNascimento,
-            Name = c.Nome,
-            Status = c.Status,
-        });
+            var result = await _clienteRepository.GetAll();
+
+            return _mapper.Map<IEnumerable<ClienteResponse>>(result);
+        }
+        catch (Exception ex)
+        {
+            throw new InternalException(false, innerException: ex);
+        }
     }
 }
