@@ -11,7 +11,7 @@ public class ClienteUpdateCommand
 public class ClienteUpdateCommandEndereco
 {
     public int? Id { get; set; }
-    public string? Endereco { get; set; }
+    public string? Logradouro { get; set; }
     public string? Cep { get; set; }
     public string? Uf { get; set; }
     public string? Cidade { get; set; }
