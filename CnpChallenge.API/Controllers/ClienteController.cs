@@ -40,4 +40,11 @@ public class ClienteController : _BaseController
         var result = await _clienteServices.CreateCliente(_mapper.Map<ClienteCreateCommand>(request));
         return CreatedAtRoute("GetById", new { id = result.Id.ToString() }, _mapper.Map<ClienteResponseDto>(result));
     }
+
+    [HttpDelete("{id}")]
+    public async Task<IActionResult> Delete([FromRoute] int id)
+    {
+        await _clienteServices.DeleteCliente(new ClienteDeleteCommand { Id = id });
+        return NoContent();
+    }
 }
