@@ -10,5 +10,7 @@ public class ClienteProfile : Profile
     {
         CreateMap<ClienteResponse, ClienteResponseDto>();
         CreateMap<ClienteEnderecoResponse, ClienteEnderecoResponseDto>();
+        CreateMap<ClienteRequestDto, ClienteCreateCommand>();
+        CreateMap<ClienteEnderecoRequestDto, ClienteCreateCommandEndereco>();
     }
 }
