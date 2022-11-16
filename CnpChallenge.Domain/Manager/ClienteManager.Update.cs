@@ -7,7 +7,7 @@ namespace CnpChallenge.Domain.Manager;
 
 public partial class ClienteManager
 {
-    public async Task<Cliente> Update(ClienteManagerUpdateRequest request, Cliente source)
+    public void Update(ClienteManagerUpdateRequest request, Cliente source)
     {
         _updateRequestValidator.ValidateAndThrow(request);
 
@@ -26,8 +26,6 @@ public partial class ClienteManager
             var resolvedAddressList = ResolveAddressMerge(request.Enderecos, source.Enderecos);
             source.Enderecos = resolvedAddressList;
         }
-
-        return source;
     }
 
     private IEnumerable<ClienteEndereco> ResolveAddressMerge(IEnumerable<ClienteManagerUpdateRequestEndereco> input,

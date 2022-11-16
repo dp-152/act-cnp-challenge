@@ -13,7 +13,7 @@ public partial class ClienteServices
         
         var request = _mapper.Map<ClienteManagerUpdateRequest>(command);
 
-        await _clienteManager.Update(request, source);
+        _clienteManager.Update(request, source);
         var result = await _clienteRepository.Update(source);
 
         return _mapper.Map<ClienteResponse>(result);

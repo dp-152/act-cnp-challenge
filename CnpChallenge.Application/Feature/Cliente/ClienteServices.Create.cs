@@ -9,7 +9,7 @@ public partial class ClienteServices
     {
         var request = _mapper.Map<ClienteManagerCreateRequest>(command);
 
-        var createdObject = await _clienteManager.Create(request);
+        var createdObject = _clienteManager.Create(request);
         var result = await _clienteRepository.Create(createdObject);
 
         return _mapper.Map<ClienteResponse>(result);

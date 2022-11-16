@@ -7,7 +7,7 @@ namespace CnpChallenge.Domain.Manager;
 
 public partial class ClienteManager
 {
-    public async Task<Cliente> Create(ClienteManagerCreateRequest request)
+    public Cliente Create(ClienteManagerCreateRequest request)
     {
         _createRequestValidator.ValidateAndThrow(request);
 
@@ -23,7 +23,7 @@ public partial class ClienteManager
                 Logradouro = e.Logradouro,
                 Uf = e.Uf,
                 Status = EStatusCadastro.Ativo,
-            }),
+            }).ToList(),
             Status = EStatusCadastro.Ativo
         };
     }
