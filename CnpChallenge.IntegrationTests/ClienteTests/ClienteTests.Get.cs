@@ -52,8 +52,6 @@ public partial class ClienteTests
     [InlineData("/api/v1/cliente/@")]
     public async Task Get_EndpointReturnsErrorForBadIdParameter(string url)
     {
-        await SeedDatabase("clientes_dataset_skim");
-
         var response = await _client.GetAsync(url);
 
         response.Should().NotBeNull();
