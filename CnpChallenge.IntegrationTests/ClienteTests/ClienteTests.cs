@@ -25,7 +25,7 @@ public partial class ClienteTests : IClassFixture<CustomWebApplicationFactory<Pr
 
         response.EnsureSuccessStatusCode();
 
-        response?.Content?.Headers?.ContentType?.ToString().Should().Contain(MediaTypeNames.Application.Json);
+        response.Content.Headers.ContentType?.ToString().Should().Contain(MediaTypeNames.Application.Json);
     }
 
     private async Task SeedDatabase(string dataset)
