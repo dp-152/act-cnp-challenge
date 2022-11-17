@@ -24,6 +24,7 @@ public class CustomWebApplicationFactory<TProgram> : WebApplicationFactory<TProg
             services.AddDbContext<MainContext>((_, optionsBuilder) =>
             {
                 optionsBuilder
+                    .UseLazyLoadingProxies()
                     .UseSqlite(_keepAliveConnection);
             });
         });
