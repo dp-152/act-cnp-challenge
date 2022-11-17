@@ -6,12 +6,12 @@ using FluentAssertions;
 
 namespace CnpChallenge.IntegrationTests.ClienteTests;
 
-public partial class ClienteTests : IClassFixture<CustomWebApplicationFactory<Program>>
+public partial class ClienteTestsSqlite : IClassFixture<SqliteWebApplicationFactory<Program>>
 {
-    private readonly CustomWebApplicationFactory<Program> _factory;
+    private readonly SqliteWebApplicationFactory<Program> _factory;
     private readonly HttpClient _client;
 
-    public ClienteTests(CustomWebApplicationFactory<Program> factory)
+    public ClienteTestsSqlite(SqliteWebApplicationFactory<Program> factory)
     {
         _factory = factory;
         _client = _factory.CreateClient();

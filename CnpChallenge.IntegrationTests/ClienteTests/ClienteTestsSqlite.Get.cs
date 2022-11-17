@@ -8,7 +8,7 @@ using Newtonsoft.Json;
 
 namespace CnpChallenge.IntegrationTests.ClienteTests;
 
-public partial class ClienteTests
+public partial class ClienteTestsSqlite
 {
     [Fact]
     public async Task Get_EndpointReturnsValidData()

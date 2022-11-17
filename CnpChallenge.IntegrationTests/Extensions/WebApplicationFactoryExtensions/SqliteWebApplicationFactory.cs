@@ -5,11 +5,11 @@ using Microsoft.EntityFrameworkCore;
 
 namespace CnpChallenge.IntegrationTests.Extensions.WebApplicationFactoryExtensions;
 
-public class CustomWebApplicationFactory<TProgram> : WebApplicationFactory<TProgram> where TProgram : class
+public class SqliteWebApplicationFactory<TProgram> : WebApplicationFactory<TProgram> where TProgram : class
 {
     private readonly SqliteConnection _keepAliveConnection;
     
-    public CustomWebApplicationFactory()
+    public SqliteWebApplicationFactory()
     {
         _keepAliveConnection = new SqliteConnection("DataSource=testdb;mode=memory;cache=shared");
     }

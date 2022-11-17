@@ -3,7 +3,7 @@ using FluentAssertions;
 
 namespace CnpChallenge.IntegrationTests.ClienteTests;
 
-public partial class ClienteTests
+public partial class ClienteTestsSqlite
 {
     [Theory]
     [InlineData("/api/v1/cliente/6")]
