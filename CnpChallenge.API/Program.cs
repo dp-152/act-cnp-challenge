@@ -11,6 +11,7 @@ using FluentValidation;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.ApplicationModels;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Caching.Memory;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Serialization;
 
@@ -49,6 +50,7 @@ builder.Services
 builder.Services.AddDbContext<MainContext>((_, optionsBuilder) =>
 {
     optionsBuilder
+        .UseMemoryCache(new MemoryCache(new MemoryCacheOptions { SizeLimit = 100 }))
         .UseLazyLoadingProxies()
         .UseSqlServer(builder.Configuration.GetConnectionString("Default"),
             opt =>
