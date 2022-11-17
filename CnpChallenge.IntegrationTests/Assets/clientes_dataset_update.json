@@ -1,0 +1,15 @@
+[
+  {
+    "nome": "Amelia D. Brown",
+    "dtNascimento": "1951-08-19T02:11:22Z",
+    "enderecos": [
+      {
+        "logradouro": "3012 Ventura Drive",
+        "cep": "93901000",
+        "uf": "CA",
+        "cidade": "Salinas",
+        "bairro": "Ventura"
+      }
+    ]
+  }
+]
