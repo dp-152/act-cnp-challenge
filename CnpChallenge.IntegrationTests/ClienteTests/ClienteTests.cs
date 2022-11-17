@@ -27,4 +27,13 @@ public partial class ClienteTests : IClassFixture<CustomWebApplicationFactory<Pr
 
         response?.Content?.Headers?.ContentType?.ToString().Should().Contain(MediaTypeNames.Application.Json);
     }
+
+    private async Task SeedDatabase(string dataset)
+    {
+        using (var scope = _factory.Services.CreateScope())
+        {
+            var context = scope.ServiceProvider.GetRequiredService<MainContext>();
+            await DbSeedingHelper.ResetClientes(context, dataset);
+        }
+    }
 }

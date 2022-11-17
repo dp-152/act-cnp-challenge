@@ -1,6 +1,5 @@
 ﻿using CnpChallenge.API.DTO.Cliente;
 using CnpChallenge.Domain.Model.ClienteModel;
-using CnpChallenge.Infrastructure.Context;
 using CnpChallenge.IntegrationTests.Helpers;
 using FluentAssertions;
 using Newtonsoft.Json;
@@ -12,11 +11,7 @@ public partial class ClienteTests
     [Fact]
     public async Task Get_EndpointReturnsValidData()
     {
-        using (var scope = _factory.Services.CreateScope())
-        {
-            var context = scope.ServiceProvider.GetRequiredService<MainContext>();
-            await DbSeedingHelper.ResetClientes(context, "clientes_dataset_skim");
-        }
+        await SeedDatabase("clientes_dataset");
 
         var response = await _client.GetAsync("/api/v1/cliente/6");
         response.EnsureSuccessStatusCode();
