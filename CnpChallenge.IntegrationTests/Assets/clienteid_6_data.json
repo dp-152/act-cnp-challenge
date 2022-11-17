@@ -1,0 +1,19 @@
+{
+    "nome": "Jena Oger",
+    "dtNascimento": "1996-12-05T09:30:38Z",
+    "status": 0,
+    "datInclusao": "2022-06-02T21:43:27Z",
+    "enderecos": [
+        {
+            "logradouro": "63897 Kensington Point",
+            "cep": "61944669",
+            "uf": "NE",
+            "cidade": "Lincoln",
+            "bairro": "augue aliquam erat",
+            "status": 1,
+            "datInclusao": "2022-02-11T05:28:53Z",
+            "id": 16
+        }
+    ],
+    "id": 6
+}
