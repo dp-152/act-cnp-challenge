@@ -14,7 +14,7 @@ public partial class ClienteTestsSqlServer
     public async Task Create_EndpointCreatesAValidEntry()
     {
         await SeedDatabase("empty");
-        var requestBody = await AssetsHelper.LoadJsonAssetAsString("cliente_create_data");
+        var requestBody = await AssetsHelper.LoadJsonAssetAsString("cliente_data");
         var content = new StringContent(requestBody, Encoding.UTF8, MediaTypeNames.Application.Json);
 
         var response = await _client.PostAsync("/api/v1/cliente", content);
@@ -37,7 +37,7 @@ public partial class ClienteTestsSqlServer
     [Fact]
     public async Task Create_EndpointReturnsErrorForInvalidData()
     {
-        var requestBody = await AssetsHelper.LoadJsonAssetAsString("cliente_create_data_invalid");
+        var requestBody = await AssetsHelper.LoadJsonAssetAsString("cliente_data_invalid");
         var content = new StringContent(requestBody, Encoding.UTF8, MediaTypeNames.Application.Json);
 
         var response = await _client.PostAsync("/api/v1/cliente", content);
@@ -48,7 +48,7 @@ public partial class ClienteTestsSqlServer
     [Fact]
     public async Task Create_EndpointReturnsErrorForMissingFields()
     {
-        var requestBody = await AssetsHelper.LoadJsonAssetAsString("cliente_create_data_partial");
+        var requestBody = await AssetsHelper.LoadJsonAssetAsString("cliente_data_partial");
         var content = new StringContent(requestBody, Encoding.UTF8, MediaTypeNames.Application.Json);
 
         var response = await _client.PostAsync("/api/v1/cliente", content);
