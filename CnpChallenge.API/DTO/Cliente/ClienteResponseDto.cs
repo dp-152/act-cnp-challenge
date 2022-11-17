@@ -9,4 +9,5 @@ public class ClienteResponseDto
     public DateTime DtNascimento { get; set; }
     public EStatusCadastro Status { get; set; }
     public IEnumerable<ClienteEnderecoResponseDto> Enderecos { get; set; }
+    public DateTime DatInclusao { get; set; }
 }
