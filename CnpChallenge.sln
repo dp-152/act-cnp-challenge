@@ -15,7 +15,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CnpChallenge.Domain.Shared"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CnpChallenge.Infrastructure", "CnpChallenge.Infrastructure\CnpChallenge.Infrastructure.csproj", "{8B08176C-FB7C-4226-ADE8-5E5D9A7388C3}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CnpChallenge.Tests", "CnpChallenge.Tests\CnpChallenge.Tests.csproj", "{6B641272-0B38-4664-84F0-81F748998C94}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CnpChallenge.IntegrationTests", "CnpChallenge.IntegrationTests\CnpChallenge.IntegrationTests.csproj", "{8AB978E0-EE75-4784-A71A-AFB000F70399}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -50,9 +50,9 @@ Global
 		{8B08176C-FB7C-4226-ADE8-5E5D9A7388C3}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{8B08176C-FB7C-4226-ADE8-5E5D9A7388C3}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{8B08176C-FB7C-4226-ADE8-5E5D9A7388C3}.Release|Any CPU.Build.0 = Release|Any CPU
-		{6B641272-0B38-4664-84F0-81F748998C94}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{6B641272-0B38-4664-84F0-81F748998C94}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{6B641272-0B38-4664-84F0-81F748998C94}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{6B641272-0B38-4664-84F0-81F748998C94}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8AB978E0-EE75-4784-A71A-AFB000F70399}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8AB978E0-EE75-4784-A71A-AFB000F70399}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8AB978E0-EE75-4784-A71A-AFB000F70399}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8AB978E0-EE75-4784-A71A-AFB000F70399}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal

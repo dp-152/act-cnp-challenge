@@ -9,6 +9,7 @@ public class ClienteResponse
     public DateTime DtNascimento { get; set; }
     public IEnumerable<ClienteEnderecoResponse> Enderecos { get; set; }
     public EStatusCadastro Status { get; set; }
+    public DateTime DatInclusao { get; set; }
 }
 
 public class ClienteEnderecoResponse
@@ -20,5 +21,6 @@ public class ClienteEnderecoResponse
     public string Cidade { get; set; }
     public string Bairro { get; set; }
     public EStatusCadastro Status { get; set; }
+    public DateTime DatInclusao { get; set; }
     
 }

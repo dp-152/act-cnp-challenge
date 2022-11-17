@@ -16,7 +16,7 @@ public class SqlClienteRepository : IClienteRepository
     
     public async Task<IEnumerable<Cliente>> GetAll()
     {
-        return await _context.Clientes.ToListAsync();
+        return await _context.Clientes.Include(c => c.Enderecos).ToListAsync();
     }
 
     public async Task<Cliente?> Get(int id)

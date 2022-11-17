@@ -1,0 +1,39 @@
+{
+  "nome": "Vaughn Howcroft",
+  "dtNascimento": "1989-12-31T11:56:08Z",
+  "status": 0,
+  "datInclusao": "2022-02-23T10:58:18Z",
+  "enderecos": [
+    {
+      "logradouro": "45 Sullivan Hill",
+      "cep": "49646537",
+      "uf": "OH",
+      "cidade": "Cleveland",
+      "bairro": "molestie sed justo pellentesque",
+      "status": 1,
+      "datInclusao": "2022-10-10T16:01:30Z",
+      "id": 34
+    },
+    {
+      "logradouro": "5 Aberg Park",
+      "cep": "80459365",
+      "uf": "MN",
+      "cidade": "Young America",
+      "bairro": "sapien",
+      "status": 1,
+      "datInclusao": "2022-04-25T16:21:33Z",
+      "id": 35
+    },
+    {
+      "logradouro": "5095 Almo Park",
+      "cep": "88545932",
+      "uf": "TX",
+      "cidade": "Wichita Falls",
+      "bairro": "lectus",
+      "status": 1,
+      "datInclusao": "2022-04-27T19:02:37Z",
+      "id": 36
+    }
+  ],
+  "id": 15
+}

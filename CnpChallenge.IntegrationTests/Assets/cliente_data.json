@@ -1,0 +1,13 @@
+{
+  "nome": "Gregg L. Aguilar",
+  "dtNascimento": "1938-04-20T15:34:33Z",
+  "enderecos": [
+    {
+      "logradouro": "177 Spellman Ct",
+      "cep": "44305000",
+      "uf": "OH",
+      "cidade": "Akron",
+      "bairro": "Spellman"
+    }
+  ]
+}
