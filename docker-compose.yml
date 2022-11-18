@@ -1,0 +1,15 @@
+version: '3.4'
+
+services:
+  cnpchallenge.api:
+    image: ${DOCKER_REGISTRY-}cnpchallengeapi
+    depends_on:
+      - cnpchallenge.db
+      
+    build:
+      context: .
+      dockerfile: CnpChallenge.API/Dockerfile
+   
+  cnpchallenge.db:
+    image: mcr.microsoft.com/mssql/server:2022-latest
+    
