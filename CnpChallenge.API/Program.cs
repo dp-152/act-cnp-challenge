@@ -10,10 +10,12 @@ using CnpChallenge.Infrastructure.Repository;
 using FluentValidation;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.ApplicationModels;
+using Microsoft.Data.SqlClient;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Caching.Memory;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Serialization;
+using Polly;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -80,10 +82,23 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerUI();
 }
 
-using (var scope = app.Services.CreateScope()) {
+using (var scope = app.Services.CreateScope())
+{
+    var retry = Policy.Handle<SqlException>().WaitAndRetry(new[]
+    {
+        TimeSpan.FromSeconds(3),
+        TimeSpan.FromSeconds(5),
+        TimeSpan.FromSeconds(8),
+        TimeSpan.FromSeconds(15),
+        TimeSpan.FromSeconds(30),
+        TimeSpan.FromSeconds(60),
+        TimeSpan.FromSeconds(90),
+    });
     var service = scope.ServiceProvider.GetRequiredService<MainContext>();
-    await service.Database.MigrateAsync();
+
+    await retry.Execute(async () => await service.Database.MigrateAsync());
 }
+
 app.UseExceptionHandler("/error");
 
 app.UseHttpsRedirection();
@@ -94,4 +109,6 @@ app.MapControllers();
 
 app.Run();
 
-public partial class Program { }
+public partial class Program
+{
+}
