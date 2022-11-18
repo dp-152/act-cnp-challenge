@@ -84,7 +84,7 @@ if (app.Environment.IsDevelopment())
 
 using (var scope = app.Services.CreateScope())
 {
-    var retry = Policy.Handle<SqlException>().WaitAndRetry(new[]
+    var retry = Policy.Handle<SqlException>().WaitAndRetryAsync(new[]
     {
         TimeSpan.FromSeconds(3),
         TimeSpan.FromSeconds(5),
@@ -96,7 +96,7 @@ using (var scope = app.Services.CreateScope())
     });
     var service = scope.ServiceProvider.GetRequiredService<MainContext>();
 
-    await retry.Execute(async () => await service.Database.MigrateAsync());
+    await retry.ExecuteAsync(async () => await service.Database.MigrateAsync());
 }
 
 app.UseExceptionHandler("/error");
