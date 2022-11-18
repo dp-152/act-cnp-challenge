@@ -3,27 +3,26 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.0.31903.59
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CnpChallenge.API", "CnpChallenge.API\CnpChallenge.API.csproj", "{245F7A3B-32CC-4CAB-978A-12B98DF7725D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CnpChallenge.API", "CnpChallenge.API\CnpChallenge.API.csproj", "{245F7A3B-32CC-4CAB-978A-12B98DF7725D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CnpChallenge.Application", "CnpChallenge.Application\CnpChallenge.Application.csproj", "{75BD0CB7-CBF0-4D2D-A2CB-26E8E9053CB5}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CnpChallenge.Application", "CnpChallenge.Application\CnpChallenge.Application.csproj", "{75BD0CB7-CBF0-4D2D-A2CB-26E8E9053CB5}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CnpChallenge.Application.Contracts", "CnpChallenge.Application.Contracts\CnpChallenge.Application.Contracts.csproj", "{A642B7F8-6AE1-4760-A6B0-7AD0696FB9A4}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CnpChallenge.Application.Contracts", "CnpChallenge.Application.Contracts\CnpChallenge.Application.Contracts.csproj", "{A642B7F8-6AE1-4760-A6B0-7AD0696FB9A4}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CnpChallenge.Domain", "CnpChallenge.Domain\CnpChallenge.Domain.csproj", "{9BAC103D-27E5-47E2-9252-A97A745F0858}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CnpChallenge.Domain", "CnpChallenge.Domain\CnpChallenge.Domain.csproj", "{9BAC103D-27E5-47E2-9252-A97A745F0858}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CnpChallenge.Domain.Shared", "CnpChallenge.Domain.Shared\CnpChallenge.Domain.Shared.csproj", "{316035F0-3E24-4718-A7CD-3BA37893781F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CnpChallenge.Domain.Shared", "CnpChallenge.Domain.Shared\CnpChallenge.Domain.Shared.csproj", "{316035F0-3E24-4718-A7CD-3BA37893781F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CnpChallenge.Infrastructure", "CnpChallenge.Infrastructure\CnpChallenge.Infrastructure.csproj", "{8B08176C-FB7C-4226-ADE8-5E5D9A7388C3}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CnpChallenge.Infrastructure", "CnpChallenge.Infrastructure\CnpChallenge.Infrastructure.csproj", "{8B08176C-FB7C-4226-ADE8-5E5D9A7388C3}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CnpChallenge.IntegrationTests", "CnpChallenge.IntegrationTests\CnpChallenge.IntegrationTests.csproj", "{8AB978E0-EE75-4784-A71A-AFB000F70399}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CnpChallenge.IntegrationTests", "CnpChallenge.IntegrationTests\CnpChallenge.IntegrationTests.csproj", "{8AB978E0-EE75-4784-A71A-AFB000F70399}"
+EndProject
+Project("{E53339B2-1760-4266-BCC7-CA923CBCF16C}") = "docker-compose", "docker-compose.dcproj", "{7EA9AB5F-D543-465B-8224-4BAB011BFBD8}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
 		Release|Any CPU = Release|Any CPU
-	EndGlobalSection
-	GlobalSection(SolutionProperties) = preSolution
-		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
 		{245F7A3B-32CC-4CAB-978A-12B98DF7725D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
@@ -54,5 +53,15 @@ Global
 		{8AB978E0-EE75-4784-A71A-AFB000F70399}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{8AB978E0-EE75-4784-A71A-AFB000F70399}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{8AB978E0-EE75-4784-A71A-AFB000F70399}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7EA9AB5F-D543-465B-8224-4BAB011BFBD8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7EA9AB5F-D543-465B-8224-4BAB011BFBD8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7EA9AB5F-D543-465B-8224-4BAB011BFBD8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7EA9AB5F-D543-465B-8224-4BAB011BFBD8}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {A0E900D3-1FD5-413F-AD20-F149A0DEE829}
 	EndGlobalSection
 EndGlobal
